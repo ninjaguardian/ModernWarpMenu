@@ -22,24 +22,19 @@ public class FastTravelScreen extends ModernWarpScreen{
 
     @Override
     protected void warpButtonHandler(WarpButton button) {
-        // Don't send command twice for single warp islands
         if (Util.getMillis() > this.warpFailCoolDownExpiryTime) {
-            if (button.getIsland().warpList.size() > 1) {
-                String warpCommand = button.getWarpCommand();
-                if (Minecraft.getInstance().player != null)
-                    Minecraft.getInstance().player.connection.sendCommand(warpCommand.substring(1));
-            }
+            String warpCommand = button.getWarpCommand();
+            if (Minecraft.getInstance().player != null)
+                Minecraft.getInstance().player.connection.sendCommand(warpCommand.substring(1));
         }
     }
 
     @Override
     protected void islandButtonHandler(IslandButton button) {
         if (Util.getMillis() > this.warpFailCoolDownExpiryTime) {
-            if (button.island.warpList.size() == 1) {
-                String warpCommand = button.island.warpList.getFirst().getWarpCommand();
-                if (Minecraft.getInstance().player != null)
-                    Minecraft.getInstance().player.connection.sendCommand(warpCommand.substring(1));
-            }
+            String warpCommand = button.island.warpList.getFirst().getWarpCommand();
+            if (Minecraft.getInstance().player != null)
+                Minecraft.getInstance().player.connection.sendCommand(warpCommand.substring(1));
         }
     }
 

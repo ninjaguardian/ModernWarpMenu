@@ -153,17 +153,15 @@ public class ModernWarpScreen extends CustomContainerScreen{
     }
 
     protected void addIslandButton(Island island) {
-        IslandButton button = new IslandButton(this, this.window, island,
-                islandButton -> this.islandButtonHandler((IslandButton) islandButton), Supplier::get);
-        if (island.warpList.size() == 1){
+        if (!island.warpList.isEmpty()) {
+            IslandButton button = new IslandButton(this, this.window, island,
+                    islandButton -> this.islandButtonHandler((IslandButton) islandButton), Supplier::get);
             this.addRenderableWidget(button);
-        }
-        for (Warp warp : island.warpList) {
-            this.addRenderableWidget(new WarpButton(button, warp,
-                    warpButton -> this.warpButtonHandler((WarpButton) warpButton), Supplier::get));
-        }
-        if (island.warpList.size() > 1) {
-            this.addRenderableWidget(button);
+
+            for (Warp warp : island.warpList) {
+                this.addRenderableWidget(new WarpButton(button, warp,
+                        warpButton -> this.warpButtonHandler((WarpButton) warpButton), Supplier::get));
+            }
         }
     }
 
@@ -526,7 +524,7 @@ public class ModernWarpScreen extends CustomContainerScreen{
     protected boolean customUIMouseClicked(double mouseX, double mouseY, int button) {
         // Left click
         if (button == InputConstants.MOUSE_BUTTON_LEFT) {
-            for (GuiEventListener listener : this.children()) {
+            for (GuiEventListener listener : this.children().reversed()) {
                 if (listener instanceof CustomContainerButton) {
                     if (listener.mouseClicked(mouseX, mouseY, button)) {
                         break;

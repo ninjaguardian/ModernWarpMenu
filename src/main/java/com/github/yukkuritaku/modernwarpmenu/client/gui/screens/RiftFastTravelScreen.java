@@ -20,19 +20,14 @@ public class RiftFastTravelScreen extends ModernWarpScreen{
     @Override
     protected void warpButtonHandler(WarpButton button) {
         if (Util.getMillis() > this.warpFailCoolDownExpiryTime) {
-            // Don't click twice for islands with only one warp
-            if (button.getIsland().warpList.size() > 1) {
-                clickSlot(button.getWarpSlotIndex());
-            }
+            clickSlot(button.getWarpSlotIndex());
         }
     }
 
     @Override
     protected void islandButtonHandler(IslandButton button) {
         if (Util.getMillis() > this.warpFailCoolDownExpiryTime) {
-            if (button.island.warpList.size() == 1) {
-                clickSlot(button.island.warpList.getFirst().slotIndex());
-            }
+            clickSlot(button.island.warpList.getFirst().slotIndex());
         }
     }
 }
