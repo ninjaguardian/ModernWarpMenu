@@ -10,13 +10,11 @@ import com.github.yukkuritaku.modernwarpmenu.event.InputEvents;
 import com.github.yukkuritaku.modernwarpmenu.state.GameState;
 import com.github.yukkuritaku.modernwarpmenu.state.ModernWarpMenuState;
 import com.github.yukkuritaku.modernwarpmenu.utils.GameCheckUtils;
-import com.mojang.logging.LogUtils;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.screen.v1.ScreenEvents;
 import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.inventory.ContainerScreen;
-import org.slf4j.Logger;
 
 import java.util.Objects;
 

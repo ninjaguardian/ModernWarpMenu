@@ -19,7 +19,7 @@ public abstract class CustomContainerScreen extends ContainerScreen {
 
     protected Window window;
     protected ScaledGrid grid;
-    protected ResourceLocation backgroundTextureLocation;
+    protected final ResourceLocation backgroundTextureLocation;
     /**
      * {@code true} renders the custom UI, {@code false} renders the default chest UI
      */

@@ -7,6 +7,7 @@ import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import org.jetbrains.annotations.NotNull;
 
 import java.nio.file.Path;
 import java.util.Collections;
@@ -95,13 +96,13 @@ public class SkyBlockConstantsProvider implements DataProvider {
     }
 
     @Override
-    public CompletableFuture<?> run(CachedOutput output) {
+    public @NotNull CompletableFuture<?> run(CachedOutput output) {
         this.addConstants();
         return CompletableFuture.allOf(generateFeatures(output));
     }
 
     @Override
-    public String getName() {
+    public @NotNull String getName() {
         return "constants";
     }
 }

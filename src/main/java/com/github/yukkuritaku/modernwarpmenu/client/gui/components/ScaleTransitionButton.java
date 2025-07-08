@@ -4,7 +4,6 @@ import com.github.yukkuritaku.modernwarpmenu.client.gui.screens.grid.GridRectang
 import com.github.yukkuritaku.modernwarpmenu.client.gui.screens.transition.ScaleTransition;
 import com.github.yukkuritaku.modernwarpmenu.data.layout.texture.LayoutTexture;
 import com.github.yukkuritaku.modernwarpmenu.data.settings.SettingsManager;
-import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.Minecraft;
@@ -13,7 +12,6 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.ARGB;
-import net.minecraft.util.Mth;
 import org.joml.Matrix4f;
 
 import java.awt.*;

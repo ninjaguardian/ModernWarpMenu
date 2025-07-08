@@ -25,24 +25,24 @@ package com.github.yukkuritaku.modernwarpmenu.client.gui.screens.grid;
 
 public class GridRectangle {
     protected transient final ScaledGrid scaledGrid;
-    protected int gridX;
-    protected int gridY;
+    protected final int gridX;
+    protected final int gridY;
     /** x position in pixels of the left edge */
-    protected float xPosition;
+    protected final float xPosition;
     /** y position in pixels of the top edge */
-    protected float yPosition;
+    protected final float yPosition;
     /** scaled x position of the left edge */
     protected float scaledXPosition;
     /** scaled y position of the top edge */
     protected float scaledYPosition;
-    protected float width;
-    protected float height;
+    protected final float width;
+    protected final float height;
     protected float scaledWidth;
     protected float scaledHeight;
     /** If {@code true}, multiply the position by the scale factor. If {@code false}, leave position as is. */
-    protected boolean scalePosition;
+    protected final boolean scalePosition;
     /** If {@code true}, shift the position so the rectangle looks like it's being expanded from the centre instead of the top left when scaled. If {@code false}, leave position as is. This works only when {@code scalePosition} is {@code false}. */
-    protected boolean centerPositionWhenScaled;
+    protected final boolean centerPositionWhenScaled;
 
     public GridRectangle(ScaledGrid scaledGrid, int gridX, int gridY, float width, float height, boolean scalePosition, boolean centerPositionWhenScaled) {
         this.scaledGrid = scaledGrid;

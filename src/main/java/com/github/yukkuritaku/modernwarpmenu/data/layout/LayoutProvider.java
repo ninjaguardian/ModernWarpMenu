@@ -9,6 +9,7 @@ import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import org.jetbrains.annotations.NotNull;
 
 import java.nio.file.Path;
 import java.util.Collections;
@@ -22,12 +23,10 @@ public class LayoutProvider implements DataProvider {
 
     private final PackOutput.PathProvider pathProvider;
     private final String modid;
-    private final CompletableFuture<HolderLookup.Provider> lookupProvider;
 
     public LayoutProvider(FabricDataOutput output, String modid, CompletableFuture<HolderLookup.Provider> lookupProvider) {
         this.pathProvider = output.createPathProvider(PackOutput.Target.RESOURCE_PACK, "layouts");
         this.modid = modid;
-        this.lookupProvider = lookupProvider;
     }
 
     public record LayoutFile(Layout layout, String fileName) {
@@ -191,13 +190,13 @@ public class LayoutProvider implements DataProvider {
     }
 
     @Override
-    public CompletableFuture<?> run(CachedOutput output) {
+    public @NotNull CompletableFuture<?> run(CachedOutput output) {
         this.addLayouts();
         return CompletableFuture.allOf(generateLayouts(output));
     }
 
     @Override
-    public String getName() {
+    public @NotNull String getName() {
         return "layouts";
     }
 }

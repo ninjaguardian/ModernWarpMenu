@@ -29,9 +29,9 @@ import net.minecraft.Util;
  * Subclasses are meant to extend this with GUI attributes whose values will change as time passes.
  */
 public class Transition {
-    protected long startTime;
-    protected long endTime;
-    protected long duration;
+    protected final long startTime;
+    protected final long endTime;
+    protected final long duration;
     protected long currentTime;
     protected float progress;
     protected boolean finished;

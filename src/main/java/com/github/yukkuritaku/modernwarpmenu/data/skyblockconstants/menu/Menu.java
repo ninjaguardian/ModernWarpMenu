@@ -1,6 +1,7 @@
 package com.github.yukkuritaku.modernwarpmenu.data.skyblockconstants.menu;
 
 import net.minecraft.util.StringRepresentable;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * In-game menus, not serialized
@@ -28,7 +29,7 @@ public enum Menu implements StringRepresentable {
     }
 
     @Override
-    public String getSerializedName() {
+    public @NotNull String getSerializedName() {
         return this.serializedName;
     }
 }

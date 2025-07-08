@@ -17,10 +17,12 @@ import net.minecraft.CrashReport;
 import net.minecraft.CrashReportCategory;
 import net.minecraft.ReportedException;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.PackResources;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceManager;
 import net.minecraft.server.packs.resources.SimplePreparableReloadListener;
 import net.minecraft.util.profiling.ProfilerFiller;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
 import java.io.Reader;
@@ -46,12 +48,16 @@ public class LayoutManager extends SimplePreparableReloadListener<LayoutManager.
         CrashReportCategory resourceCategory = crashReport.addCategory("Resource");
         CrashReportCategory resourcePackCategory = crashReport.addCategory("Resource Pack");
         resourceCategory.setDetail("Path", location.toString());
-        resourcePackCategory.setDetail("Name", resource.source().location().title().getString());
+        String resourceString;
+        try (PackResources pack = resource.source()) {
+            resourceString = pack.location().title().getString();
+        }
+        resourcePackCategory.setDetail("Name", resourceString);
         throw new ReportedException(crashReport);
     }
 
     @Override
-    protected LayoutList prepare(ResourceManager resourceManager, ProfilerFiller profiler) {
+    protected @NotNull LayoutList prepare(ResourceManager resourceManager, ProfilerFiller profiler) {
         ImmutableMap.Builder<ResourceLocation, Layout> layoutBuilder = ImmutableMap.builder();
         Map<ResourceLocation, Resource> resources = resourceManager.listResources("layouts",
                 resourceLocation ->

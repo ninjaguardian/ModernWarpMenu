@@ -51,7 +51,7 @@ public class ScaledGrid {
      */
     protected boolean scaleStartPosition;
     /** If {@code true}, shift the start position so the grid looks like it's being expanded from the centre instead of the top left when scaled. If {@code false}, leave position as is. This works only when {@code scaleStartPosition} is {@code false}. */
-    protected boolean centerStartPositionWhenScaled;
+    protected final boolean centerStartPositionWhenScaled;
 
     /**
      * Create a {@code ScaledGrid} with the top-left corner at ({@code gridStartX}. {@code gridStartY}) with a total width

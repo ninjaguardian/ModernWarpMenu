@@ -8,9 +8,9 @@ public class Settings {
     public int settingsVersion = SettingsManager.SETTINGS_VERSION;
 
     @SerialEntry
-    public GeneralSettings general = new GeneralSettings();
+    public final GeneralSettings general = new GeneralSettings();
     @SerialEntry
-    public DebugSettings debug = new DebugSettings();
+    public final DebugSettings debug = new DebugSettings();
 
     public static class GeneralSettings{
 

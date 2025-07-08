@@ -16,8 +16,10 @@ import net.minecraft.CrashReport;
 import net.minecraft.CrashReportCategory;
 import net.minecraft.ReportedException;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.PackResources;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceManager;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 
 import java.io.IOException;
@@ -44,7 +46,11 @@ public class SkyBlockConstantsManager implements IdentifiableResourceReloadListe
         CrashReportCategory resourceCategory = crashReport.addCategory("Resource");
         CrashReportCategory resourcePackCategory = crashReport.addCategory("Resource Pack");
         resourceCategory.setDetail("Path", location.toString());
-        resourcePackCategory.setDetail("Name", resource.source().location().title().getString());
+        String resourceString;
+        try (PackResources pack = resource.source()) {
+            resourceString = pack.location().title().getString();
+        }
+        resourcePackCategory.setDetail("Name", resourceString);
         throw new ReportedException(crashReport);
     }
 
@@ -86,7 +92,7 @@ public class SkyBlockConstantsManager implements IdentifiableResourceReloadListe
     }
 
     @Override
-    public CompletableFuture<Void> reload(PreparationBarrier preparationBarrier, ResourceManager resourceManager, Executor io, Executor game) {
+    public @NotNull CompletableFuture<Void> reload(PreparationBarrier preparationBarrier, ResourceManager resourceManager, Executor io, Executor game) {
         return this.prepare(resourceManager, io)
                 .thenCompose(preparationBarrier::wait)
                 .thenAcceptAsync(this::apply, game);

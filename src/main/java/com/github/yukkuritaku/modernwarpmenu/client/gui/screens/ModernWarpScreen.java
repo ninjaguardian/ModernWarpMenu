@@ -287,24 +287,21 @@ public class ModernWarpScreen extends CustomContainerScreen{
             int ySpacing = Minecraft.getInstance().font.lineHeight + 3;
 
             for (int i = 0; i < lineCount; i++) {
+                MultiLineTextWidget widget;
                 if (i == 0) {
-                    MultiLineTextWidget widget = new MultiLineTextWidget(labelX, labelY,
+                    widget = new MultiLineTextWidget(labelX, labelY,
                             Component.translatable("modernwarpmenu.errors.modernWarpScreen.initFailed", getClass().getSimpleName()).withStyle(ChatFormatting.RED),
                             Minecraft.getInstance().font);
-                    widget.setColor(ARGB.white(1.0f));
-                    widget.setWidth(this.width);
-                    widget.setCentered(true);
-                    this.addRenderableOnly(widget);
                 } else {
-                    MultiLineTextWidget widget = new MultiLineTextWidget(labelX, labelY,
+                    widget = new MultiLineTextWidget(labelX, labelY,
                             Component.literal(String.format("%s : %s", guiInitException.getClass().getName(), guiInitException.getLocalizedMessage()))
                                     .withStyle(ChatFormatting.WHITE),
                             Minecraft.getInstance().font);
-                    widget.setColor(ARGB.white(1.0f));
-                    widget.setWidth(this.width);
-                    widget.setCentered(true);
-                    this.addRenderableOnly(widget);
                 }
+                widget.setColor(ARGB.white(1.0f));
+                widget.setWidth(this.width);
+                widget.setCentered(true);
+                this.addRenderableOnly(widget);
                 labelY = labelY + ySpacing;
 
             }

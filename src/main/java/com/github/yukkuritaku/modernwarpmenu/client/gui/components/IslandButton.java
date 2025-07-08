@@ -7,7 +7,6 @@ import com.github.yukkuritaku.modernwarpmenu.data.layout.Island;
 import com.github.yukkuritaku.modernwarpmenu.data.layout.Warp;
 import com.github.yukkuritaku.modernwarpmenu.data.settings.SettingsManager;
 import com.mojang.blaze3d.platform.Window;
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.ARGB;

@@ -36,12 +36,10 @@ public class ModernWarpMenu implements ClientModInitializer {
 	public void onInitializeClient() {
 		SettingsManager.init();
 		ModernWarpMenuCommand.registerCommands();
-		FabricLoader.getInstance().getModContainer(MOD_ID).ifPresent(modContainer -> {
-			ResourceManagerHelper.registerBuiltinResourcePack(ResourceLocation.fromNamespaceAndPath(MOD_ID, "ultra_wide_layout"),
-					modContainer,
-					Component.literal("21:9 Ultra wide layout pack"),
-					ResourcePackActivationType.NORMAL);
-		});
+		FabricLoader.getInstance().getModContainer(MOD_ID).ifPresent(modContainer -> ResourceManagerHelper.registerBuiltinResourcePack(ResourceLocation.fromNamespaceAndPath(MOD_ID, "ultra_wide_layout"),
+                modContainer,
+                Component.literal("21:9 Ultra wide layout pack"),
+                ResourcePackActivationType.NORMAL));
 		ResourceManagerHelper.get(PackType.CLIENT_RESOURCES).registerReloadListener(this.skyBlockConstantsManager);
 		ResourceManagerHelper.get(PackType.CLIENT_RESOURCES).registerReloadListener(this.layoutManager);
 		new ChatListener().registerEvents();
